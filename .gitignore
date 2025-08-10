@@ -1,0 +1,89 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Testes e relatórios
+test-results/
+reports/
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# JARs e arquivos gerados
+*.jar
+*.war
+*.ear
+
+# Arquivos de ambiente
+.env
+
+# Outros
+target/
+bin/
+node_modules/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+pom.xml
+
+# Build Maven
+/target/
+
+# Binários
+bin/
+
+# Node.js
+node_modules/
+
+# Relatórios e testes
+reports/
+test-results/
+
+# Cache
+.cache/
+
+# Logs
+logs/
+
+# Arquivos de ambiente
+.env
+
+# PGAdmin
+.pgadmin/
+
+# Banco de dados H2
+*.mv.db
+*.h2.db
+
+# Banco de dados PostgreSQL
+*.sql
+*.dump
+
+# Fontes geradas
+/generated-sources/

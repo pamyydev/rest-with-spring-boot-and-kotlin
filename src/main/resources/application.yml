@@ -1,0 +1,72 @@
+# Configuração da aplicação Spring Boot
+# YAML é mais limpo que .properties para estruturas hierárquicas
+
+server:
+  port: 8080 # Porta onde a aplicação vai rodar
+  servlet:
+    context-path: /api # Prefixo para todas as rotas (opcional)
+
+spring:
+  # Configuração do banco de dados
+  datasource:
+    # H2 - banco em memória, perfeito para desenvolvimento e demos
+    # Pros: fácil setup, não precisa instalar nada
+    # Contras: dados são perdidos quando para a aplicação
+    url: jdbc:h2:mem:taskdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  # Console web do H2 - super útil pra debug
+  h2:
+    console:
+      enabled: true # Acesse http://localhost:8080/h2-console
+      path: /h2-console
+
+  # Configurações do JPA/Hibernate
+  jpa:
+    hibernate:
+      # ddl-auto: create-drop recria as tabelas a cada restart
+      # Outras opções: update, validate, none
+      ddl-auto: create-drop
+    show-sql: true # Mostra as queries SQL no console (útil pra debug)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true # Formata o SQL no console
+
+# Configurações de logging
+logging:
+  level:
+    com.interview.taskmanager: DEBUG # Nosso código em modo debug
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG # Queries SQL detalhadas
+
+# Configurações customizadas da aplicação
+app:
+  name: Task Manager API
+  version: 1.0.0
+  description: API REST para gerenciamento de tarefas
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  # Em produção, usaríamos um banco real tipo PostgreSQL
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/taskmanager}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate # Em prod, não alteramos schema automaticamente
+    show-sql: false # Não mostra SQL em produção
+  h2:
+    console:
+      enabled: false # Console H2 desabilitado em produção
+logging:
+  level:
+    root: WARN
+    com.interview.taskmanager: INFO

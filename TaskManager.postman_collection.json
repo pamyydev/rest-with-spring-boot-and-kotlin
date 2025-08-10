@@ -1,0 +1,263 @@
+{
+	"info": {
+		"name": "Task Manager API",
+		"description": "Coleção completa para testar a API de gerenciamento de tarefas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"version": "1.0.0"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api",
+			"description": "URL base da API - mude para produção quando necessário"
+		}
+	],
+	"item": [
+		{
+			"name": "📋 Gerenciamento de Tarefas",
+			"description": "Operações CRUD básicas",
+			"item": [
+				{
+					"name": "Listar todas as tarefas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks"]
+						},
+						"description": "Retorna todas as tarefas cadastradas"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar tarefa por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "1"]
+						},
+						"description": "Busca uma tarefa específica pelo ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar nova tarefa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Estudar Spring Boot\",\n  \"description\": \"Aprender conceitos fundamentais do framework\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tasks",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks"]
+						},
+						"description": "Cria uma nova tarefa"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar tarefa",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Estudar Spring Boot e Kotlin\",\n  \"description\": \"Aprender conceitos fundamentais e boas práticas\",\n  \"completed\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tasks/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "1"]
+						},
+						"description": "Atualiza uma tarefa existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Marcar tarefa como concluída",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/1/toggle",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "1", "toggle"]
+						},
+						"description": "Alterna o status de conclusão da tarefa"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar tarefa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "1"]
+						},
+						"description": "Remove uma tarefa pelo ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔍 Consultas e Filtros",
+			"description": "Endpoints para busca e filtros",
+			"item": [
+				{
+					"name": "Tarefas pendentes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/status/false",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "status", "false"]
+						},
+						"description": "Lista apenas tarefas não concluídas"
+					},
+					"response": []
+				},
+				{
+					"name": "Tarefas concluídas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/status/true",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "status", "true"]
+						},
+						"description": "Lista apenas tarefas concluídas"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar tarefas por título",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/search?q=spring",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "search"],
+							"query": [
+								{
+									"key": "q",
+									"value": "spring",
+									"description": "Termo de busca no título"
+								}
+							]
+						},
+						"description": "Busca tarefas que contenham o termo no título"
+					},
+					"response": []
+				},
+				{
+					"name": "Estatísticas das tarefas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/stats",
+							"host": ["{{baseUrl}}"],
+							"path": ["tasks", "stats"]
+						},
+						"description": "Retorna estatísticas gerais das tarefas"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🏥 Health Checks",
+			"description": "Endpoints de monitoramento",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["actuator", "health"]
+						},
+						"description": "Verifica se a aplicação está funcionando"
+					},
+					"response": []
+				},
+				{
+					"name": "Info da aplicação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/info",
+							"host": ["{{baseUrl}}"],
+							"path": ["actuator", "info"]
+						},
+						"description": "Informações sobre a aplicação"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Script executado antes de cada requisição",
+					"console.log('Executando requisição para: ' + request.url);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Testes automatizados que rodam após cada requisição",
+					"pm.test('Status code é 2xx', function () {",
+					"    pm.response.to.have.status.oneOf([200, 201, 204]);",
+					"});",
+					"",
+					"pm.test('Response time menor que 1000ms', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});",
+					"",
+					"// Para endpoints que retornam JSON",
+					"if (pm.response.headers.get('Content-Type')?.includes('application/json')) {",
+					"    pm.test('Response é JSON válido', function () {",
+					"        pm.response.to.be.json;",
+					"    });",
+					"}"
+				]
+			}
+		}
+	]
+}
