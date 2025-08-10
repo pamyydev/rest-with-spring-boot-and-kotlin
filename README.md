@@ -1,4 +1,4 @@
-# 📋 Task Manager API
+# 📋 Task Manager API (Em desenvolvimento)
 
 API REST para gerenciamento de tarefas desenvolvida com **Spring Boot 3** + **Kotlin** para demonstração em entrevista técnica.
 
@@ -240,4 +240,3 @@ Este projeto foi desenvolvido como demonstração técnica para entrevistas, sho
 - Conhecimento em cloud computing (AWS)
 
 **Contato**: pamelamiranda.o87@gmail.com
-
