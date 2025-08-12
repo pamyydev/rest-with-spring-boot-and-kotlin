@@ -8,8 +8,6 @@ API REST para gerenciamento de tarefas desenvolvida com **Spring Boot 3** + **Ko
 - **Kotlin** - Linguagem moderna e concisa para JVM
 - **Spring Boot 3.2** - Framework para desenvolvimento rápido
 - **Spring Data JPA** - Camada de persistência com Hibernate
-- **H2 Database** - Banco em memória para desenvolvimento
-- **PostgreSQL** - Banco para produção
 - **Gradle** - Gerenciador de dependências e build
 
 ### DevOps & Deploy
@@ -19,7 +17,6 @@ API REST para gerenciamento de tarefas desenvolvida com **Spring Boot 3** + **Ko
 
 ### Ferramentas
 - **Postman** - Testes da API
-- **Swagger/OpenAPI** - Documentação automática
 - **Spring Boot Actuator** - Monitoramento e health checks
 
 ## 🏗️ Arquitetura
@@ -135,31 +132,14 @@ http://localhost:8080/api
 }
 ```
 
-## 🌐 Documentação Interativa
-
-Após iniciar a aplicação, acesse:
-- **Swagger UI**: http://localhost:8080/swagger-ui/index.html
-- **OpenAPI JSON**: http://localhost:8080/v3/api-docs
-
-## 🗄️ Banco de Dados
-
-### Desenvolvimento (H2)
-- **Console H2**: http://localhost:8080/h2-console
-- **JDBC URL**: `jdbc:h2:mem:taskdb`
-- **Username**: `sa`
-- **Password**: (em branco)
-
 ### Produção (PostgreSQL)
-Configurado via variáveis de ambiente no `docker-compose.yml` ou AWS.
+Configurado via variáveis de ambiente no `docker-compose.yml` AWS.
 
 ## ☁️ Deploy na AWS
-
-### Opções de Deploy
 
 1. **AWS ECS + RDS**
    - Container registry: ECR
    - Orquestração: ECS com Fargate
-   - Banco: RDS PostgreSQL
 
 2. **AWS Elastic Beanstalk**
    - Deploy mais simples
