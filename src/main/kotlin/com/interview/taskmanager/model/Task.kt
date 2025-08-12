@@ -9,7 +9,7 @@ import java.time.LocalDateTime
  * @Entity: diz pro JPA que essa classe vai virar uma tabela no banco
  * @Table: especifica o nome da tabela (opcional, por padrão seria "task")
  *
- * Em Kotlin, data class já nos dá equals(), hashCode(), toString() e copy() de graça! 💪
+ * Em Kotlin, data class já nos dá equals(), hashCode(), toString() e copy() de graça
  */
 @Entity
 @Table(name = "tasks")
