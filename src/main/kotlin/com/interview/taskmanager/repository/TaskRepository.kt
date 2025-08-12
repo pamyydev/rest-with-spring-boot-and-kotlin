@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
  * JpaRepository já nos dá vários métodos prontos:
  * - findAll(), findById(), save(), delete(), etc.
  *
- * Só precisamos herdar e pronto! O Spring Data JPA faz a mágica 🔮
+ * Só precisamos herdar e pronto! O Spring Data JPA faz a mágica
  * Os tipos genéricos são <Entidade, TipoDaChavePrimaria>
  */
 @Repository
